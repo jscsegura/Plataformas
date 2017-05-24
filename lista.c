@@ -103,7 +103,7 @@ pos_t* actual= head;
 	while (actual-> next -> next != NULL){ 
 		actual= actual->next; //Apuntamos a la última dirección
 	}
-
+/* Se guarda el dato en a, y se resetea el dato en cero, para luego liberar la memoria*/
 a = actual-> next -> data;
 actual -> next -> data=0;
 free(actual -> next);
@@ -115,9 +115,88 @@ return a;
 }
 
 //--------------------------------------------
-
+/* Dicha función remueve el primer elemento de la lista, recibiendo como parametro el puntero al puntero*/
 int pop_front(pos_t** head){
 
+int a=0;
+
+pos_t* nodoSiguiente= NULL;
+/* Salvamos la posici[on del nodo siguiente, que ha a ser nuestro nuevo head*/
+
+/* El asterisco porque debemos acceder al dato que apunta el head, y no direccion*/
+nodoSiguiente= (*head)-> next;
+a= (*head)->data;
+free(*head);
+*head = nodoSiguiente;
+
+return a;
+
+
+}
+
+//------------------------------------------------
+
+int insertElement(pos_t** head, int pos, int new_value){
+
+pos_t * nuevo; //!< Variable pos_t que almacenara tanto el valor como direccion del nuevo item de la lista
+
+
+/* Damos un espacio de memoria a dicha lista */
+    nuevo = malloc(sizeof(pos_t));
+
+	if (nuevo==NULL){
+		
+		return 1;
+
+	}
+
+	else{
+
+pos_t* actual1=*head;
+
+/* Accedemos a una posicion antes del que queremos modificar */
+
+for (int i=1; i<pos-1; i++){
+
+actual1= actual1-> next;
+
+}
+
+/* Apuntamos al nodo siguiente del que queremos modificar */
+pos_t* actual2=*head;
+
+actual2= actual1-> next;
+
+actual1->next = nuevo;
+
+nuevo -> next=actual2;
+
+/* Modificamos el nuevo valor */
+nuevo->data = new_value;
+	return 0;
+	}
+}
+
+//------------------------------------------------------
+
+void removeElement(pos_t** head, int pos){
+
+pos_t* actual1=*head;
+
+pos_t* temporal;
+
+/* Accedemos a una posicion antes del que queremos modificar */
+
+for (int i=1; i<pos-1; i++){
+
+actual1= actual1-> next;
+
+}
+
+/* Apuntamos al nodo siguiente del que queremos modificar */
+pos_t* actual2=*head;
+
+actual2= actual1-> next;
 
 
 

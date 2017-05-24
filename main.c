@@ -13,14 +13,22 @@ push_front(ptr,3);
 
 printList(a);
 
+printf("\n");
 
-int removed=pop_back(a);
-
+insertElement(ptr, 2,90);
 
 printList(a);
 
-printf("El numero que se sacó fue %d\n", removed);
+
+//int removed=pop_back(a);
 
 
+//printList(a);
+
+//printf("El numero que se sacó fue %d\n", removed);
+
+//removed= pop_front(ptr);
+
+//printf("El numero que se sacó fue %d\n", removed);
 return 0;
 }
