@@ -243,3 +243,100 @@ free(temporal);
 
 //-------------------------------------------------------
 
+
+int printElement(const int value){
+
+printf("%d ", value);
+
+}
+//-------------------------------------------------------
+void sort(pos_t* head, char dir){
+
+int size;
+pos_t* actual=head;
+
+while (actual!=NULL){
+actual= actual->next;
+ size++;
+
+
+}
+
+pos_t* current=head;
+pos_t* siguiente = head-> next; 
+
+int temporalData;
+
+//int size = length();
+int k= size;
+if (dir='a')
+  {
+   for (int i=0;i<size-1; i++,k--){
+
+	for (int j=1; j< k; j++){	
+		if(current->data > siguiente->data){
+	
+			temporalData = current -> data;
+			current -> data = siguiente -> data;
+			siguiente-> data = temporalData;
+
+			}
+current = current -> next;
+siguiente = siguiente-> next;
+
+		}
+
+
+	}
+
+
+  }
+else if(dir='d')
+  {
+ 
+  }
+else
+  {
+ 
+  }
+
+}
+
+//-------------------------
+
+void sort_chuzo(pos_t* head, char dir){
+
+if(dir='a'){
+
+int swapped, i;
+
+pos_t* ptr1;
+pos_t* lptr=NULL;
+
+   if (ptr1 == NULL)
+        return;
+ 
+    do
+    {
+        swapped = 0;
+        ptr1 = head;
+ 
+        while (ptr1->next != lptr)
+        {
+            if (ptr1->data > ptr1->next->data)
+            { 
+                int temp = ptr1->data;
+    		ptr1->data = ptr1->next->data;
+   		ptr1->next->data = temp;
+                swapped = 1;
+            }
+            ptr1 = ptr1->next;
+        }
+        lptr = ptr1;
+    }
+    while (swapped);
+}
+
+
+}
+

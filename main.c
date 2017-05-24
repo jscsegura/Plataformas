@@ -15,20 +15,31 @@ printList(a);
 
 printf("\n");
 
-insertElement(ptr, 2,90);
+insertElement(ptr, 2,95);
+insertElement(ptr, 2,32);
+insertElement(ptr, 2,56);
 
 printList(a);
 
-int b=removeElement(ptr,2);
+sort_chuzo(a,'a');
 
 printf("\n");
 
 printList(a);
-printf("Se ha eliminado %d\n", b);
+
+//int b=removeElement(ptr,2);
+
+printf("\n");
+
+//printList(a);
+//printf("Se ha eliminado %d\n", b);
 
 
-freeList(a);
-printList(a);
+//freeList(a);
+//printList(a);
+
+//printElement(4);
+//printElement(5);
 
 //int removed=pop_back(a);
 
