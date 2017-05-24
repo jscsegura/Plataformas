@@ -308,7 +308,7 @@ void sort_chuzo(pos_t* head, char dir){
 
 if(dir='a'){
 
-int swapped, i;
+int cambio, i;
 
 pos_t* ptr1;
 pos_t* lptr=NULL;
@@ -318,7 +318,7 @@ pos_t* lptr=NULL;
  
     do
     {
-        swapped = 0;
+        cambio = 0;
         ptr1 = head;
  
         while (ptr1->next != lptr)
@@ -328,13 +328,13 @@ pos_t* lptr=NULL;
                 int temp = ptr1->data;
     		ptr1->data = ptr1->next->data;
    		ptr1->next->data = temp;
-                swapped = 1;
+                cambio = 1;
             }
             ptr1 = ptr1->next;
         }
         lptr = ptr1;
     }
-    while (swapped);
+    while (cambio);
 }
 
 
