@@ -19,6 +19,16 @@ insertElement(ptr, 2,90);
 
 printList(a);
 
+int b=removeElement(ptr,2);
+
+printf("\n");
+
+printList(a);
+printf("Se ha eliminado %d\n", b);
+
+
+freeList(a);
+printList(a);
 
 //int removed=pop_back(a);
 

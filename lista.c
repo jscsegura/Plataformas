@@ -179,25 +179,67 @@ nuevo->data = new_value;
 
 //------------------------------------------------------
 
-void removeElement(pos_t** head, int pos){
+int removeElement(pos_t** head, int pos){
 
-pos_t* actual1=*head;
+pos_t* previo=*head;
+pos_t* eliminado=*head;
+pos_t* posterior=*head;
 
-pos_t* temporal;
+
 
 /* Accedemos a una posicion antes del que queremos modificar */
 
 for (int i=1; i<pos-1; i++){
 
-actual1= actual1-> next;
+previo= previo-> next;
+
+}
+
+for (int i=1; i<pos; i++){
+
+eliminado= eliminado-> next;
+
+}
+
+for (int i=1; i<pos; i++){
+
+posterior= posterior-> next;
 
 }
 
 /* Apuntamos al nodo siguiente del que queremos modificar */
-pos_t* actual2=*head;
-
-actual2= actual1-> next;
-
-
+int a;
+previo -> next = posterior->next;
+a=eliminado -> data;
+/* Liberamos el espacio de memoria del nodo que estamos eliminando */
+eliminado -> data=0;
+free(eliminado);
+return a;
 
 }
+
+//----------------------------------------------------
+
+
+int freeList(pos_t* head){
+
+
+pos_t* temporal;
+
+/* Se salva la variable actual en un temporal y se pasa el head al nodo que sigue, para poder eliminar de manera segura el nodo */
+
+while (head!=NULL){
+
+temporal= head;
+head -> data=0;
+head = head->next;
+free(temporal);
+
+}
+
+/* Si se libero bien, si se llama a la funcion printList deberia de dar numeros extraños*/
+
+}
+
+//-------------------------------------------------------
+
