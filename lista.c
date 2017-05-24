@@ -243,98 +243,82 @@ free(temporal);
 
 //-------------------------------------------------------
 
+/*Esto da como resultado */
 
 int printElement(const int value){
 
 printf("%d ", value);
 
+return 0; 
+
 }
 //-------------------------------------------------------
-void sort(pos_t* head, char dir){
 
-int size;
-pos_t* actual=head;
-
-while (actual!=NULL){
-actual= actual->next;
- size++;
+void sort(pos_t* head, const char dir){
 
 
-}
-
-pos_t* current=head;
-pos_t* siguiente = head-> next; 
-
-int temporalData;
-
-//int size = length();
-int k= size;
-if (dir='a')
-  {
-   for (int i=0;i<size-1; i++,k--){
-
-	for (int j=1; j< k; j++){	
-		if(current->data > siguiente->data){
-	
-			temporalData = current -> data;
-			current -> data = siguiente -> data;
-			siguiente-> data = temporalData;
-
-			}
-current = current -> next;
-siguiente = siguiente-> next;
-
-		}
-
-
-	}
-
-
-  }
-else if(dir='d')
-  {
- 
-  }
-else
-  {
- 
-  }
-
-}
-
-//-------------------------
-
-void sort_chuzo(pos_t* head, char dir){
-
-if(dir='a'){
+if(dir=='a'){
 
 int cambio, i;
 
-pos_t* ptr1;
-pos_t* lptr=NULL;
+pos_t* p;
+pos_t* last=NULL;
 
-   if (ptr1 == NULL)
+   if (p == NULL)
         return;
  
     do
     {
         cambio = 0;
-        ptr1 = head;
+        p = head;
  
-        while (ptr1->next != lptr)
+        while (p->next != last)
         {
-            if (ptr1->data > ptr1->next->data)
+            if (p->data > p->next->data)
             { 
-                int temp = ptr1->data;
-    		ptr1->data = ptr1->next->data;
-   		ptr1->next->data = temp;
+                int temp = p->data;
+    		p->data = p->next->data;
+   		p->next->data = temp;
                 cambio = 1;
             }
-            ptr1 = ptr1->next;
+            p = p->next;
         }
-        lptr = ptr1;
+        last = p;
     }
     while (cambio);
+	return; 
+}
+
+if(dir=='d'){
+
+int cambio, i;
+
+pos_t* p;
+pos_t* last=NULL;
+
+   if (p == NULL)
+        return;
+ 
+    do
+    {
+        cambio = 0;
+        p = head;
+ 
+        while (p->next != last)
+        {
+            if (p->data < p->next->data)
+            { 
+                int temp = p->data;
+    		p->data = p->next->data;
+   		p->next->data = temp;
+                cambio = 1;
+            }
+            p = p->next;
+        }
+        last = p;
+    }
+    while (cambio);
+	return;
 }
 
 

@@ -11,7 +11,7 @@ push_back(a,4);
 pos_t** ptr=&a;
 push_front(ptr,3);
 
-printList(a);
+
 
 printf("\n");
 
@@ -21,12 +21,13 @@ insertElement(ptr, 2,56);
 
 printList(a);
 
-sort_chuzo(a,'a');
+
+sort(a, 'a');
 
 printf("\n");
 
-printList(a);
 
+printList(a);
 //int b=removeElement(ptr,2);
 
 printf("\n");
