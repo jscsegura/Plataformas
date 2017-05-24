@@ -61,7 +61,7 @@ actual -> next=malloc(sizeof(pos_t));
 int push_front(pos_t** head, int new_value) {
 
 
-    pos_t * nuevo;
+    pos_t * nuevo; //!< Variable pos_t que almacenara tanto el valor como direccion del nuevo item de la lista
 
 
 /* Damos un espacio de memoria a dicha lista */
@@ -88,12 +88,12 @@ int push_front(pos_t** head, int new_value) {
 int pop_back(pos_t* head){
 
 /* Se debe considerar si hay un solo elemento en la lista */
-
+int a; //!< Variable local para guardar el valor actual
 	if(head->next==NULL){ 
-
+	a = head->data;
 	head-> data=0;
 	free(head);
-	return 0;
+	return a;
 	}
 
 pos_t* actual= head;
@@ -104,16 +104,21 @@ pos_t* actual= head;
 		actual= actual->next; //Apuntamos a la última dirección
 	}
 
-
+a = actual-> next -> data;
 actual -> next -> data=0;
 free(actual -> next);
 actual -> next =NULL;
 
-return 0;
+return a;
 
 
 }
 
 //--------------------------------------------
 
+int pop_front(pos_t** head){
 
+
+
+
+}

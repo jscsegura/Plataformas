@@ -14,8 +14,13 @@ push_front(ptr,3);
 printList(a);
 
 
-pop_back(a);
+int removed=pop_back(a);
+
+
 printList(a);
+
+printf("El numero que se sacó fue %d\n", removed);
+
 
 return 0;
 }
