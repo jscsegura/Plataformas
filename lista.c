@@ -324,3 +324,62 @@ pos_t* last=NULL;
 
 }
 
+//-------------------------------
+
+
+pos_t* readList(const char* filePath){
+
+
+
+FILE *binario= fopen(filePath, "rb");
+int x; 
+int cont=0; 
+
+pos_t* a=NULL; 
+
+
+while (binario!=NULL){
+
+	if (cont=0){
+
+fread(&x, sizeof(x), 1, binario); 
+
+a= createList(x);
+
+cont=1; 
+
+	}
+
+	else{
+
+fread(&x, sizeof(x), 1, binario); 
+push_back(a,x);
+
+		}
+}
+
+return a; 
+
+}
+
+//-----------------------------------
+
+int getElement(pos_t* head, int index, int* valid){
+
+pos_t* actual=head; 
+int valor; 
+
+for (int i=1; i<index; i++){
+
+actual= actual-> next;
+
+}
+
+valor = actual -> data; 
+
+return valor; 
+
+
+
+}
+
