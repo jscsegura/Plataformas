@@ -67,11 +67,12 @@ printf("\n");
 freeList(a);
 printList(a);
 
-//char* nombre[20]= "Datos.bin";
 
-//pos_t* p= readList(nombre); 
-//printf("\n");
+
+pos_t* p= readList("./build/datos.bin"); 
+printf("\n");
 //printList(p);
+writeList(a, "./build/archivotexto.txt");
 
 
 

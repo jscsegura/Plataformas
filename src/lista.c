@@ -330,43 +330,6 @@ pos_t* last=NULL;
 
 }
 
-//-------------------------------
-
-
-pos_t* readList(const char* filePath){
-
-
-
-FILE *binario= fopen(filePath, "rb");
-int x; 
-int cont=0; 
-
-pos_t* a=NULL; 
-
-
-while (binario!=NULL){
-
-	if (cont=0){
-
-fread(&x, sizeof(x), 1, binario); 
-
-a= createList(x);
-
-cont=1; 
-
-	}
-
-	else{
-
-fread(&x, sizeof(x), 1, binario); 
-push_back(a,x);
-
-		}
-}
-
-return a; 
-
-}
 
 //-----------------------------------
 /* Esta función devuelve el elemento en una posición deseada*/
@@ -401,5 +364,63 @@ return valor;
 
 
 
+}
+
+//---------------------------
+/* Esta funcion lee desde un archivo binario numeros enteros */
+pos_t* readList(const char* filePath){
+/* Creamos la variable FILE para el archivo */
+	FILE *binario;
+	int aux=0, cantidad,i , *buffer;
+size_t info;
+	long tamano;
+	/* Alocamos memoria para el primer elemento */
+	pos_t *p_first=calloc(1,sizeof(pos_t));
+/* Abrimos el archivo. Vemos el tamaño del mismo para ver cuántas iteraciones necesitamos */
+	binario=fopen(filePath, "rb");
+	fseek(binario, 0 , SEEK_END);
+	tamano=ftell(binario);
+	cantidad=tamano/sizeof(int);
+	rewind(binario);
+
+	buffer=calloc(cantidad,sizeof(int));
+	info=fread(buffer, sizeof(int), cantidad, binario);
+
+/* Iteramos sobre la lista de numeros */
+   for(i=0; i<cantidad; i++){
+    		switch(aux){
+    		case 0: /* creamos la lista y agregamos el primer elemento */
+    			*p_first=*createList(buffer[i]);
+    			aux=1;
+    			break;
+    		case 1: /* Hacemos push back al resto de los elementos. Si hay error, lo imprime */
+    			if(push_back(p_first, buffer[i])==1){
+    				printf("No hay memoria suficiente");
+    				exit(1);
+    			}
+    			break;
+    	}
+    }
+/* Cerramos el archivo y retornamos el puntero al primer elemento de la lista creada */
+    fclose(binario);
+	return p_first;
+}
+
+//-------------------------------------------------------------
+void writeList(pos_t* head, const char* filePath){
+/* Abrimos el archivo.  */
+	FILE *archivo;
+	char num[10]={0};
+	int n;
+	archivo=fopen(filePath,"a");
+/* Iteramos sobre la lista y escribimos cada linea en el archivo de texto.  */
+	do{
+		n=(*head).data;
+		sprintf(num,"%d\n",n);
+		fprintf(archivo, num);
+		head=(*head).next;
+	}
+	while(head!=NULL);
+	fclose(archivo);
 }
 
