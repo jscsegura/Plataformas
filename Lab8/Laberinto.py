@@ -23,17 +23,18 @@ def traductor(laberinto):
 
 def traductorFinal(a,laberinto):
         final = [[0] * 36 for i in range(7)]
+        final[1][1]='E'
         for i in range(7):
             for j in range(36):
-                if laberinto[i][j]=='#':
-                    a[i][j] = 1
-                elif laberinto[i][j]==' ':
-                    a[i][j] = 0
-                elif laberinto[i][j]=='S':
-                    a[i][j] = 2
-                else:
-                    a[i][j] = 0
-        return a
+                if a[i][j]==1:
+                    final[i][j] = '#'
+                elif a[i][j]==0:
+                    final[i][j] = ' '
+                elif a[i][j]==2:
+                    final[i][j] = 'S'
+                elif a[i][j]==3:
+                    final[i][j] = 'o'
+        return final
 
 
 
@@ -64,3 +65,9 @@ search(1, 1)
 print(a)
 final= traductorFinal(a, laberinto)
 print(final)
+
+
+import numpy as np
+with open('outfile.txt') as f:
+    for line in final:
+        np.savetxt(f, line)
