@@ -48,7 +48,6 @@ def search(x, y):
 
     a[x][y] = 3
 
-    # explore neighbors clockwise starting by the one on the right
     if ((x < len(a)-1 and search(x+1, y))
         or (y > 0 and search(x, y-1))
         or (x > 0 and search(x-1, y))
@@ -66,8 +65,14 @@ print(a)
 final= traductorFinal(a, laberinto)
 print(final)
 
+datos=open('laberintofinal.txt', 'w')
 
-import numpy as np
-with open('outfile.txt') as f:
-    for line in final:
-        np.savetxt(f, line)
+for i in range(7):
+    for j in range(36):
+        temp=final[i][j]
+        datos.write(temp)
+
+    datos.write("\n")
+
+
+datos.close()
